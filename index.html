@@ -1,6 +1,6 @@
 <html>
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <script src="script.js"></script>
     <link rel="stylesheet" type="text/css" href="styles.css"/>
 </head>
@@ -23,9 +23,33 @@
                 <option>Расширенный</option>
                 <option>Пацанячий</option>
             </select>
-            <input type="input" name="global-search" class="g-search" id="global-search" placeholder="Type your query here...">
+            <input type="input" name="global-search" class="g-search" id="global-search"
+                   placeholder="Type your query here...">
             <button id="g-search-btn" class="global-search--btn">🔎</button>
             <button id="export" class="export-btn">Export</button>
+        </div>
+        <div id="filters" class="filters">
+            <div id="order-num" class="filters--order-num">
+                <p>№ Заявки</p>
+                <input type="text">
+            </div>
+            <div id="priority" class="filters--priority">
+                <p>Приоритет</p>
+                <select size="1" class="priority--priority-menu">
+                    <option value="high">Высокий</option>
+                    <option value="mid">Средний</option>
+                    <option value="low">Низкий</option>
+                </select>
+            </div>
+            <div id="status" class="status">
+                <p>Статус</p>
+                <select size="1" class="status--status-menu">
+                    <option value="new">Новая</option>
+                    <option value="proceed">В работе</option>
+                    <option value="done">Обработана</option>
+                    <option value="return">Возвращена</option>
+                </select>
+            </div>
         </div>
     </section>
 </header>
