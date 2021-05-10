@@ -1,8 +1,8 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <script src="script.js"></script>
-    <link rel="stylesheet" type="text/css" href="styles.css"/>
+    <script src="src/scripts/script.js"></script>
+    <link rel="stylesheet" type="text/css" href="src/styles/styles.css"/>
 </head>
 <body>
 <header>
@@ -35,6 +35,7 @@
             <div id="priority" class="filters--priority">
                 <p>Приоритет</p>
                 <select size="1" class="priority--priority-menu">
+                    <option value="null"></option>
                     <option value="high">Высокий</option>
                     <option value="mid">Средний</option>
                     <option value="low">Низкий</option>
@@ -43,6 +44,7 @@
             <div id="status" class="status">
                 <p>Статус</p>
                 <select size="1" class="status--status-menu">
+                    <option value="null"></option>
                     <option value="new">Новая</option>
                     <option value="proceed">В работе</option>
                     <option value="done">Обработана</option>
@@ -60,5 +62,7 @@
         </div>
     </section>
 </header>
+<section id="results" class="results">
+</section>
 </body>
 </html>
