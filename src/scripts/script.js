@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', getData);
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('g-search-btn').addEventListener('click',globalSearch);
-})
+    document.getElementById('g-search').addEventListener('input',globalSearch);
+});
 
 var data = null; //сделать через замыкание
 var result = [];
@@ -63,7 +64,7 @@ function renderTable(array) {
 
 function globalSearch() {
     result = [];
-    let input = document.getElementById('global-search').value.toLowerCase()
+    let input = document.getElementById('g-search').value.toLowerCase()
     for (let key in data) {
         let str = JSON.stringify(data[key]).toLowerCase();
         if (str.match(input) !== null) {
