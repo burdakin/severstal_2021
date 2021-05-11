@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', getData);
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('g-search-btn').addEventListener('click', globalSearch);
     document.getElementById('g-search').addEventListener('input', globalSearch);
+    document.getElementById('launch').addEventListener('click',filters);
 });
 
 var data = null; //сделать через замыкание
@@ -90,6 +91,10 @@ function orderSearch() {
                 filterArray.push(data[key]);
             }
         }
-        renderTable(filterArray);
     }
+}
+
+function filters () {
+    orderSearch();
+    renderTable(filterArray);
 }
