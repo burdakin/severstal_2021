@@ -84,18 +84,37 @@ function globalSearch() {
 
 function orderSearch() {
     let order = document.getElementById('order-num-text').value.toLowerCase();
-    if (order !== null || undefined) {
+    if (order !== '') {
         for (let key in data) {
             let str = JSON.stringify(data[key].id).toLowerCase();
             if (str.match(order) !== null) {
                 filterArray.push(data[key]);
             }
         }
+    } else {getArray()}
+}
+
+function priorSearch() {
+    if (document.getElementById('priority-select').value !== 'null') {
+        let value = document.getElementById('priority-select').value;
+        for (let key in filterArray) {
+            if (value == filterArray[key].priority) {
+                filterArray.push(data[key]);
+            }
+        }
     }
 }
 
+function getArray() {
+    for (let key in data) {
+        filterArray.push(data[key])
+    }
+};
+
 function filters () {
+    filterArray = [];
     clearTable();
     orderSearch();
+    priorSearch();
     renderTable(filterArray);
 }
