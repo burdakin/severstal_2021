@@ -95,6 +95,7 @@ function orderSearch() {
 }
 
 function filters () {
+    clearTable();
     orderSearch();
     renderTable(filterArray);
 }
