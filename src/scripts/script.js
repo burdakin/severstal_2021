@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', getData);
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('g-search-btn').addEventListener('click', globalSearch);
     document.getElementById('g-search').addEventListener('input', globalSearch);
-    document.getElementById('launch').addEventListener('click',filters);
+    document.getElementById('launch').addEventListener('click', filters);
 });
 
 var data = null; //сделать через замыкание
@@ -91,7 +91,9 @@ function orderSearch() {
                 filterArray.push(data[key]);
             }
         }
-    } else {getArray()}
+    } else {
+        getArray()
+    }
 }
 
 function priorSearch() {
@@ -111,7 +113,7 @@ function getArray() {
     }
 };
 
-function filters () {
+function filters() {
     filterArray = [];
     clearTable();
     orderSearch();
