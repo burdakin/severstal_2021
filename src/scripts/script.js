@@ -82,7 +82,7 @@ function globalSearch() {
 }
 
 function orderSearch() {
-    let order = document.getElementById('order-num-text').value.toLowerCase;
+    let order = document.getElementById('order-num-text').value.toLowerCase();
     if (order !== null || undefined) {
         for (let key in data) {
             let str = JSON.stringify(data[key].id).toLowerCase();
