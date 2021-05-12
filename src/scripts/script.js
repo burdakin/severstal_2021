@@ -110,6 +110,7 @@ function priorSearch() {
 }
 
 function getArray() {
+        filterArray = [];
     for (let key in data) {
         filterArray.push(data[key])
     }
