@@ -70,6 +70,14 @@ function clearTable() {
     }
 }
 
+function getArray() {
+        filterArray = [];
+    for (let key in data) {
+        filterArray.push(data[key])
+    }
+};
+
+
 function globalSearch() {
     result = [];
     let input = document.getElementById('g-search').value.toLowerCase()
@@ -96,32 +104,6 @@ function orderSearch() {
     }
 }
 
-function priorSearch() {
-    if (document.getElementById('priority-select').value !== 'null') {
-        let tempArr = []
-        let value = document.getElementById('priority-select').value;
-        for (let key in filterArray) {
-            if (value == filterArray[key].priority) {
-                tempArr.push(data[key]);
-            }
-        }
-        filterArray = tempArr;
-    }
-}
-
-function statSearch() {
-    if (document.getElementById('status-select').value !== 'null') {
-        let tempArr = []
-        let value = document.getElementById('priority-select').value;
-        for (let key in filterArray) {
-            if (value == filterArray[key].status) {
-                tempArr.push(data[key]);
-            }
-        }
-        filterArray = tempArr;
-    }
-}
-
 function selectSearch (id, val) {
      if (document.getElementById(id).value !== 'null') {
         let tempArr = []
@@ -135,12 +117,6 @@ function selectSearch (id, val) {
     }
 }
 
-function getArray() {
-        filterArray = [];
-    for (let key in data) {
-        filterArray.push(data[key])
-    }
-};
 
 function filters() {
     filterArray = [];
