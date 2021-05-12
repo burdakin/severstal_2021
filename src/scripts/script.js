@@ -145,6 +145,7 @@ function getArray() {
 function filters() {
     filterArray = [];
     clearTable();
+    orderSearch();
     selectSearch('priority-select','priority');
     selectSearch('status-select','status');
     renderTable(filterArray);
