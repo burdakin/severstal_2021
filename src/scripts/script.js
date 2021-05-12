@@ -109,6 +109,32 @@ function priorSearch() {
     }
 }
 
+function statSearch() {
+    if (document.getElementById('status-select').value !== 'null') {
+        let tempArr = []
+        let value = document.getElementById('priority-select').value;
+        for (let key in filterArray) {
+            if (value == filterArray[key].status) {
+                tempArr.push(data[key]);
+            }
+        }
+        filterArray = tempArr;
+    }
+}
+
+function selectSearch (id, value) {
+     if (document.getElementById(id).value !== 'null') {
+        let tempArr = []
+        let value = document.getElementById(id).value;
+        for (let key in filterArray) {
+            if (value == filterArray[key].value) {
+                tempArr.push(data[key]);
+            }
+        }
+        filterArray = tempArr;
+    }
+}
+
 function getArray() {
         filterArray = [];
     for (let key in data) {
@@ -119,7 +145,7 @@ function getArray() {
 function filters() {
     filterArray = [];
     clearTable();
-    orderSearch();
-    priorSearch();
+    selectSearch('priority-select','priority');
+    selectSearch('status-select','status');
     renderTable(filterArray);
 }
