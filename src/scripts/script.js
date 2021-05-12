@@ -127,7 +127,7 @@ function selectSearch (id, val) {
         let tempArr = []
         let value = document.getElementById(id).value;
         for (let key in filterArray) {
-            if (value == filterArray[key].val) {
+            if (value == filterArray[key][val]) {
                 tempArr.push(data[key]);
             }
         }
