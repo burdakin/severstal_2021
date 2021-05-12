@@ -71,7 +71,7 @@ function clearTable() {
 }
 
 function getArray() {
-        filterArray = [];
+    filterArray = [];
     for (let key in data) {
         filterArray.push(data[key])
     }
@@ -104,8 +104,8 @@ function orderSearch() {
     }
 }
 
-function selectSearch (id, val) {
-     if (document.getElementById(id).value !== 'null') {
+function selectSearch(id, val) {
+    if (document.getElementById(id).value !== 'null') {
         let tempArr = []
         let value = document.getElementById(id).value;
         for (let key in filterArray) {
@@ -117,12 +117,31 @@ function selectSearch (id, val) {
     }
 }
 
+function getDate () {
+    let st = Date.parse(document.getElementById('start').value);
+    let fin = Date.parse(document.getElementById('fin').value);
+
+    if ((st !== Nan) && (fin !== Nan)) {
+        for (let key in filterArray) {
+            let tempArr = [];
+            let startDate = Date.parse(filterArray[key].start);
+            let finDate = Date.parse(filterArray[key].finish);
+            if ((st <== startDate) && (fin >== finDate)){
+                tempArr.push(filterArray[key])
+            }
+        }
+        filterArrar = tempArr;
+    }
+
+}
+
 
 function filters() {
     filterArray = [];
     clearTable();
     orderSearch();
-    selectSearch('priority-select','priority');
-    selectSearch('status-select','status');
+    selectSearch('priority-select', 'priority');
+    selectSearch('status-select', 'status');
+    getDate();
     renderTable(filterArray);
 }
