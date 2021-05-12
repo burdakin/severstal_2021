@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('g-search-btn').addEventListener('click', globalSearch);
     document.getElementById('g-search').addEventListener('input', globalSearch);
     document.getElementById('launch').addEventListener('click', filters);
+    document.getElementById('reset').addEventListener('click',reset);
 });
 
 var data = null; //сделать через замыкание
@@ -133,6 +134,16 @@ function getDate() {
         }
         filterArray = tempArr;
     }
+
+}
+
+function reset () {
+    document.getElementById('order-num-text').value = '';
+    document.getElementById('priority-select').value = 'null';
+    document.getElementById('status-select').value = 'null';
+    document.getElementById('start').value = '';
+    document.getElementById('fin').value = '';
+    renderTable(data);
 
 }
 
