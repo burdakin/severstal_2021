@@ -26,6 +26,7 @@ function renderTable(array) {
     let table = document.createElement('table');
     table.setAttribute('id', 'table');
     table.setAttribute('class', 'table');
+    //table.innerHTML = '<tr'
     document.getElementById('results').appendChild(table);
     for (let i = 0; i < length; i++) {
         let row = document.createElement('tr');
@@ -121,7 +122,7 @@ function getDate () {
     let st = Date.parse(document.getElementById('start').value);
     let fin = Date.parse(document.getElementById('fin').value);
 
-    if ((st !== NaN) && (fin !== NaN)) {
+    if ((Number.isNaN(st) == false) && (Number.isNaN(fin) == false)) {
         for (let key in filterArray) {
             let tempArr = [];
             let startDate = Date.parse(filterArray[key].start);
