@@ -121,7 +121,7 @@ function getDate () {
     let st = Date.parse(document.getElementById('start').value);
     let fin = Date.parse(document.getElementById('fin').value);
 
-    if ((st !== NaN) && (fin !== NaN)) {
+    if ((st !== "NaN") && (fin !== "NaN")) {
         for (let key in filterArray) {
             let tempArr = [];
             let startDate = Date.parse(filterArray[key].start);
