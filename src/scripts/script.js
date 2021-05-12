@@ -130,7 +130,7 @@ function getDate () {
                 tempArr.push(filterArray[key])
             }
         }
-        filterArrar = tempArr;
+        filterArray = tempArr;
     }
 
 }
