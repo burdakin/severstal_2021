@@ -98,12 +98,14 @@ function orderSearch() {
 
 function priorSearch() {
     if (document.getElementById('priority-select').value !== 'null') {
+        let tempArr = []
         let value = document.getElementById('priority-select').value;
         for (let key in filterArray) {
             if (value == filterArray[key].priority) {
-                filterArray.push(data[key]);
+                tempArr.push(data[key]);
             }
         }
+        filterArray = tempArr;
     }
 }
 
