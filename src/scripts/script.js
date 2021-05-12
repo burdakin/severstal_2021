@@ -125,7 +125,7 @@ function statSearch() {
 function selectSearch (id, val) {
      if (document.getElementById(id).value !== 'null') {
         let tempArr = []
-        let value = document.getElementById(id).val;
+        let value = document.getElementById(id).value;
         for (let key in filterArray) {
             if (value == filterArray[key].val) {
                 tempArr.push(data[key]);
