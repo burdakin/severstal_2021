@@ -126,7 +126,7 @@ function getDate () {
             let tempArr = [];
             let startDate = Date.parse(filterArray[key].start);
             let finDate = Date.parse(filterArray[key].finish);
-            if ((st <== startDate) && (fin >== finDate)){
+            if ((st <= startDate) && (fin >= finDate)){
                 tempArr.push(filterArray[key])
             }
         }
