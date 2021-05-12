@@ -26,7 +26,7 @@ function renderTable(array) {
     let table = document.createElement('table');
     table.setAttribute('id', 'table');
     table.setAttribute('class', 'table');
-    //table.innerHTML = '<tr'
+    table.innerHTML = '<tr><th>№ Заявки</th><th>Приоритет</th><th>Статус заявки</th><th>№ СЗ</th><th>Дата создания</th><th>Дата завершения</th><th>Исполнитель</th></tr>'
     document.getElementById('results').appendChild(table);
     for (let i = 0; i < length; i++) {
         let row = document.createElement('tr');
@@ -118,16 +118,16 @@ function selectSearch(id, val) {
     }
 }
 
-function getDate () {
+function getDate() {
     let st = Date.parse(document.getElementById('start').value);
     let fin = Date.parse(document.getElementById('fin').value);
 
     if ((Number.isNaN(st) == false) && (Number.isNaN(fin) == false)) {
+        let tempArr = [];
         for (let key in filterArray) {
-            let tempArr = [];
             let startDate = Date.parse(filterArray[key].start);
             let finDate = Date.parse(filterArray[key].finish);
-            if ((st <= startDate) && (fin >= finDate)){
+            if ((st <= startDate) && (fin >= finDate)) {
                 tempArr.push(filterArray[key])
             }
         }
@@ -135,7 +135,6 @@ function getDate () {
     }
 
 }
-
 
 function filters() {
     filterArray = [];
