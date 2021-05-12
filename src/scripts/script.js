@@ -122,12 +122,12 @@ function statSearch() {
     }
 }
 
-function selectSearch (id, value) {
+function selectSearch (id, val) {
      if (document.getElementById(id).value !== 'null') {
         let tempArr = []
-        let value = document.getElementById(id).value;
+        let value = document.getElementById(id).val;
         for (let key in filterArray) {
-            if (value == filterArray[key].value) {
+            if (value == filterArray[key].val) {
                 tempArr.push(data[key]);
             }
         }
