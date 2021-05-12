@@ -1,3 +1,11 @@
+/*
+- Замыкания
+- Расширить функция фильтра по датам
+- Выровнять таблицу
+- Ахуенно накидать стилей
+* - Сделать побольше джсон
+*/
+
 document.addEventListener('DOMContentLoaded', getData);
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('g-search-btn').addEventListener('click', globalSearch);
