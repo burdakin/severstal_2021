@@ -17,6 +17,7 @@ async function data(obj) {
     let data = '';
     return function returnData() {
         data = obj;
+        return data;
     }
 }
 
