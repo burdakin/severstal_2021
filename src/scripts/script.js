@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function data (obj) {
     let data = null;
-    return function returnData () {
+    return function returnData (obj) {
         data = obj;
     }
 }
