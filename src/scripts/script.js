@@ -13,10 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('reset').addEventListener('click', reset);
 });
 
-async function data(obj) {
+async function data() {
     let data = '';
     return function returnData() {
-        data = obj;
+        data = await getJSON();
         return data;
     }
 }
@@ -30,10 +30,9 @@ async function getJSON() {
 }
 
 async function getData() {
-    let obj = await getJSON();
-    let dataClosure = await data(obj);
-    await console.log(dataClosure(obj));
-    await renderTable(dataClosure(obj));
+    let dataClosure = await data();
+    await console.log(dataClosure());
+    await renderTable(dataClosure());
 }
 
 function renderTable(array) {
