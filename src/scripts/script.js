@@ -1,5 +1,4 @@
 /*
-- Замыкания
 - Выровнять таблицу
 - Ахуенно накидать стилей
 * - Сделать побольше джсон
@@ -13,36 +12,27 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('reset').addEventListener('click', reset);
 });
 
-// var data = null; //сделать через замыкание
-var filterArray = []; //сделать через замыкание
-
 async function getJSON() {
     let result = await fetch('./src/api/data.json');
     return await result.json();
 }
 
-class Data {
+class Arrays {
     constructor () {
-        this.data = data;
+        this.data = '';
+        this.filterArr = [];
     }
-    async function getData() {
-        this.data = getJSON
+    async get() {
+        this.data = await getJSON();
+        return this.data;
     }
 }
 
-async function data() {
-    let data = '';
-    return function returnData() {
-        data = obj;
-        return data;
-    }
-}
+var arrs = new Arrays();
 
 async function getData() {
-    let obj = await getJSON();
-    let dataClosure = await data(obj);
-    await console.log(dataClosure());
-    await renderTable(dataClosure());
+    let data = await arrs.get();
+    await renderTable(data);
 }
 
 function renderTable(array) {
@@ -97,9 +87,9 @@ function clearTable() {
 }
 
 function getArray() {
-    filterArray = [];
-    for (let key in data) {
-        filterArray.push(data[key])
+    arrs.filterArr = [];
+    for (let key in arrs.data) {
+        arrs.filterArr.push(arrs.data[key])
     }
 };
 
@@ -107,10 +97,10 @@ function getArray() {
 function globalSearch() {
     let result = [];
     let input = document.getElementById('g-search').value.toLowerCase()
-    for (let key in data) {
-        let str = JSON.stringify(data[key]).toLowerCase();
+    for (let key in arrs.data) {
+        let str = JSON.stringify(arrs.data[key]).toLowerCase();
         if (str.match(input) !== null) {
-            result.push(data[key]);
+            result.push(arrs.data[key]);
         }
     }
     renderTable(result);
@@ -119,10 +109,10 @@ function globalSearch() {
 function orderSearch() {
     let order = document.getElementById('order-num-text').value.toLowerCase();
     if (order !== '') {
-        for (let key in data) {
-            let str = JSON.stringify(data[key].id).toLowerCase();
+        for (let key in arrs.data) {
+            let str = JSON.stringify(arrs.data[key].id).toLowerCase();
             if (str.match(order) !== null) {
-                filterArray.push(data[key]);
+                arrs.filterArr.push(arrs.data[key]);
             }
         }
     } else {
@@ -134,12 +124,12 @@ function selectSearch(id, val) {
     if (document.getElementById(id).value !== 'null') {
         let tempArr = []
         let value = document.getElementById(id).value;
-        for (let key in filterArray) {
-            if (value == filterArray[key][val]) {
-                tempArr.push(data[key]);
+        for (let key in arrs.filterArr) {
+            if (value == arrs.filterArr[key][val]) {
+                tempArr.push(arrs.data[key]);
             }
         }
-        filterArray = tempArr;
+        arrs.filterArr = tempArr;
     }
 }
 
@@ -149,28 +139,28 @@ function getDate() {
 
     if ((Number.isNaN(st) == false) && (Number.isNaN(fin) == false)) {
         let tempArr = [];
-        for (let key in filterArray) {
-            let startDate = Date.parse(filterArray[key].start);
-            let finDate = Date.parse(filterArray[key].finish);
+        for (let key in arrs.filterArr) {
+            let startDate = Date.parse(arrs.filterArr[key].start);
+            let finDate = Date.parse(arrs.filterArr[key].finish);
             if ((st <= startDate) && (fin >= finDate)) {
-                tempArr.push(filterArray[key])
+                tempArr.push(arrs.filterArr[key])
             }
         }
-        filterArray = tempArr;
+        arrs.filterArr = tempArr;
     } else if (Number.isNaN(st) == true) {
         let tempArr = [];
-        for (let key in filterArray) {
-            let finDate = Date.parse(filterArray[key].finish);
+        for (let key in arrs.filterArr) {
+            let finDate = Date.parse(arrs.filterArr[key].finish);
             if (fin >= finDate) {
-                tempArr.push(filterArray[key])
+                tempArr.push(arrs.filterArr[key])
             }
         }
     } else if (Number.isNaN(fin) == true) {
         let tempArr = [];
-        for (let key in filterArray) {
-            let startDate = Date.parse(filterArray[key].start);
+        for (let key in arrs.filterArr) {
+            let startDate = Date.parse(arrs.filterArr[key].start);
             if (st >= startDate) {
-                tempArr.push(filterArray[key])
+                tempArr.push(arrs.filterArr[key])
             }
         }
     }
@@ -182,16 +172,16 @@ function reset() {
     document.getElementById('status-select').value = 'null';
     document.getElementById('start').value = '';
     document.getElementById('fin').value = '';
-    renderTable(data());
+    renderTable(arrs.data);
 
 }
 
 function filters() {
-    filterArray = [];
+    arrs.filterArr = [];
     clearTable();
     orderSearch();
     selectSearch('priority-select', 'priority');
     selectSearch('status-select', 'status');
     getDate();
-    renderTable(filterArray);
+    renderTable(arrs.filterArr);
 }
