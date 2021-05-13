@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function data(obj) {
     let data = '';
-    let obj = obj;
     return function returnData() {
         data = obj;
     }
