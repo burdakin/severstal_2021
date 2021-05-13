@@ -1,6 +1,5 @@
 /*
 - Замыкания
-- Расширить функция фильтра по датам
 - Выровнять таблицу
 - Ахуенно накидать стилей
 * - Сделать побольше джсон
@@ -14,7 +13,14 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('reset').addEventListener('click', reset);
 });
 
-var data = null; //сделать через замыкание
+function data (obj) {
+    let data = null;
+    return function returnData () {
+        data = obj;
+    }
+}
+
+// var data = null; //сделать через замыкание
 var result = []; //сделать через замыкание
 var filterArray = []; //сделать через замыкание
 
@@ -24,9 +30,9 @@ async function getJSON() {
 }
 
 async function getData() {
-    data = await getJSON();
-    await console.log(data);
-    renderTable(data);
+    let obj = await getJSON();
+    await console.log(data(obj));
+    await renderTable(data(obj));
 }
 
 function renderTable(array) {
