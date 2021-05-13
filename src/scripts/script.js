@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function data() {
     let data = '';
-    return function returnData() {
+    return async function returnData() {
         data = await getJSON();
         return data;
     }
