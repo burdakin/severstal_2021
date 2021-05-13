@@ -22,7 +22,6 @@ async function data(obj) {
 }
 
 // var data = null; //сделать через замыкание
-var result = []; //сделать через замыкание
 var filterArray = []; //сделать через замыкание
 
 async function getJSON() {
@@ -97,7 +96,7 @@ function getArray() {
 
 
 function globalSearch() {
-    result = [];
+    let result = [];
     let input = document.getElementById('g-search').value.toLowerCase()
     for (let key in data) {
         let str = JSON.stringify(data[key]).toLowerCase();
@@ -174,7 +173,7 @@ function reset() {
     document.getElementById('status-select').value = 'null';
     document.getElementById('start').value = '';
     document.getElementById('fin').value = '';
-    renderTable(data);
+    renderTable(data());
 
 }
 
