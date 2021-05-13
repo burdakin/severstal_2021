@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('g-search-btn').addEventListener('click', globalSearch);
     document.getElementById('g-search').addEventListener('input', globalSearch);
     document.getElementById('launch').addEventListener('click', filters);
-    document.getElementById('reset').addEventListener('click',reset);
+    document.getElementById('reset').addEventListener('click', reset);
 });
 
 var data = null; //сделать через замыкание
@@ -141,26 +141,39 @@ function getDate() {
             }
         }
         filterArray = tempArr;
-    }
+    } else if (Number.isNaN(st) == true) {
+        let tempArr = [];
+        for (let key in filterArray) {
+            let finDate = Date.parse(filterArray[key].finish);
+            if (fin >= finDate) {
+                tempArr.push(filterArray[key])
+            }
+        } else if (Number.isNaN(fin) == true) {
+            let tempArr = [];
+            for (let key in filterArray) {
+                let startDate = Date.parse(filterArray[key].start);
+                if (st >= startDate) {
+                    tempArr.push(filterArray[key])
+                }
 
-}
+            }
 
-function reset () {
-    document.getElementById('order-num-text').value = '';
-    document.getElementById('priority-select').value = 'null';
-    document.getElementById('status-select').value = 'null';
-    document.getElementById('start').value = '';
-    document.getElementById('fin').value = '';
-    renderTable(data);
+            function reset() {
+                document.getElementById('order-num-text').value = '';
+                document.getElementById('priority-select').value = 'null';
+                document.getElementById('status-select').value = 'null';
+                document.getElementById('start').value = '';
+                document.getElementById('fin').value = '';
+                renderTable(data);
 
-}
+            }
 
-function filters() {
-    filterArray = [];
-    clearTable();
-    orderSearch();
-    selectSearch('priority-select', 'priority');
-    selectSearch('status-select', 'status');
-    getDate();
-    renderTable(filterArray);
-}
+            function filters() {
+                filterArray = [];
+                clearTable();
+                orderSearch();
+                selectSearch('priority-select', 'priority');
+                selectSearch('status-select', 'status');
+                getDate();
+                renderTable(filterArray);
+            }
