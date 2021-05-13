@@ -13,14 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('reset').addEventListener('click', reset);
 });
 
-async function data() {
-    let data = '';
-    return async function returnData() {
-        data = await getJSON();
-        return data;
-    }
-}
-
 // var data = null; //сделать через замыкание
 var filterArray = []; //сделать через замыкание
 
@@ -29,8 +21,26 @@ async function getJSON() {
     return await result.json();
 }
 
+class Data {
+    constructor () {
+        this.data = data;
+    }
+    async function getData() {
+        this.data = getJSON
+    }
+}
+
+async function data() {
+    let data = '';
+    return function returnData() {
+        data = obj;
+        return data;
+    }
+}
+
 async function getData() {
-    let dataClosure = await data();
+    let obj = await getJSON();
+    let dataClosure = await data(obj);
     await console.log(dataClosure());
     await renderTable(dataClosure());
 }
