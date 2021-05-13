@@ -13,14 +13,12 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('reset').addEventListener('click', reset);
 });
 
-function data(obj) {
+async function data(obj) {
     let data = '';
     return function returnData() {
         data = obj;
     }
 }
-
-let dataClosure = data(obj);
 
 // var data = null; //сделать через замыкание
 var result = []; //сделать через замыкание
@@ -33,6 +31,7 @@ async function getJSON() {
 
 async function getData() {
     let obj = await getJSON();
+    let dataClosure = await data(obj);
     await console.log(dataClosure(obj));
     await renderTable(dataClosure(obj));
 }
