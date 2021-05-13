@@ -1,6 +1,9 @@
 /*
-- Выровнять таблицу
-- Ахуенно накидать стилей
+- Шрифты, ховеры
+- раскидать скрипты и стили
+– настроить Галп
+- пересобрать Хероку
+- ТЕСТИРОВАТЬ!
 * - Сделать побольше джсон
 */
 
@@ -18,10 +21,11 @@ async function getJSON() {
 }
 
 class Arrays {
-    constructor () {
+    constructor() {
         this.data = '';
         this.filterArr = [];
     }
+
     async get() {
         this.data = await getJSON();
         return this.data;
@@ -41,7 +45,7 @@ function renderTable(array) {
     let table = document.createElement('table');
     table.setAttribute('id', 'table');
     table.setAttribute('class', 'table');
-    table.innerHTML = '<tr><th>№ Заявки</th><th>Приоритет</th><th>Статус заявки</th><th>№ СЗ</th><th>Дата создания</th><th>Дата завершения</th><th>Исполнитель</th></tr>'
+    table.innerHTML = '<tr class="t-header"><th>№ Заявки</th><th>Приоритет</th><th>Статус заявки</th><th>№ СЗ</th><th>Дата создания</th><th>Дата завершения</th><th>Исполнитель</th></tr>'
     document.getElementById('results').appendChild(table);
     for (let i = 0; i < length; i++) {
         let row = document.createElement('tr');
