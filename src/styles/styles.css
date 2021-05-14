@@ -98,37 +98,53 @@ header {
     border-radius: 10px;
 }
 
+.user-pic:hover {
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
 .back-btn {
     background-image: url('../img/back.png');
     background-color: #aac6de;
-    width: 2vw;
-    height: 4vh;
+    width: 5vw;
+    height: 5vh;
     border: none;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     background-position: center;
+}
+
+.back-btn:hover {
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 .home-btn {
     background-image: url('../img/home.png');
     background-color: #aac6de;
-    width: 2vw;
-    height: 4vh;
+    width: 4vw;
+    height: 5vh;
     border: none;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     background-position: center;
+}
+
+.home-btn:hover {
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 .search {
     background-image: url('../img/search.png');
     background-color: #aac6de;
-    width: 2vw;
-    height: 4vh;
+    width: 4vw;
+    height: 5vh;
     border: none;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     background-position: center;
+}
+
+.search:hover {
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 .see-more {
@@ -160,6 +176,10 @@ header {
     font-size: 1.3em;
 }
 
+.global-search--btn:hover {
+    background-color: #8fb2d4;
+}
+
 .filters--launch {
     width: 10vw;
     height: 5vh;
@@ -169,6 +189,10 @@ header {
     color: white;
 }
 
+.filters--launch:hover {
+    background-color: #4c7ed6;
+}
+
 .filters--reset {
     width: 8vw;
     height: 5vh;
@@ -176,4 +200,8 @@ header {
     background-color: #fff0ed;
     border-radius: 6px;
     color: red;
+}
+
+.filters--reset:hover {
+    background-color: #f1cdc6;
 }

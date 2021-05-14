@@ -1,9 +1,6 @@
 /*
-- Шрифты, ховеры
-- раскидать скрипты и стили
-– настроить Галп
-- пересобрать Хероку
-- ТЕСТИРОВАТЬ!
+- Шрифты, адаптивчик
+- раскидать скрипты и стили и настроить Галп
 * - Сделать побольше джсон
 */
 
@@ -14,11 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('launch').addEventListener('click', filters);
     document.getElementById('reset').addEventListener('click', reset);
 });
-
-async function getJSON() {
-    let result = await fetch('./src/api/data.json');
-    return await result.json();
-}
 
 class Arrays {
     constructor() {
@@ -37,6 +29,11 @@ var arrs = new Arrays();
 async function getData() {
     let data = await arrs.get();
     await renderTable(data);
+}
+
+async function getJSON() {
+    let result = await fetch('./src/api/data.json');
+    return await result.json();
 }
 
 function renderTable(array) {
